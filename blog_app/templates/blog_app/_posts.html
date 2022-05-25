@@ -1,7 +1,9 @@
   {% for post in posts %}
-  <div>
-    <div>{{ post.title }}</div>
-    <div>{{ post.created }}</div>
-    <div>{{ post.body }}</div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text">{{ post.created }}</p>
+      <div>{{ post.body }}</div>
+    </div>
   </div>
   {% endfor %}
