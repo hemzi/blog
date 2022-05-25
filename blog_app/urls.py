@@ -5,5 +5,5 @@ app_name = 'blog_app'
 
 urlpatterns = [
   #index
-  path('', views.index, name='index')
+  path('', views.home, name='home')
 ]
