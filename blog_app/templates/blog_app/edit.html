@@ -1,0 +1,9 @@
+{% extends 'blog_app/base.html' %}
+
+{% block contentMain %}
+<form action="{% url 'blog_app:post_edit' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Save Post</button>
+</form>
+{% endblock contentMain %}
