@@ -4,4 +4,4 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-  return HttpResponse("success!")
+  return render(request, 'blog_app/base.html')
