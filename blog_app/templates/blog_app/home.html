@@ -2,4 +2,5 @@
 
 {% block contentMain %}
 {% include 'blog_app/_posts.html' %}
+<a href="{% url 'blog_app:post_new' %}" class="btn btn-primary">New Post</a>
 {% endblock contentMain %}
