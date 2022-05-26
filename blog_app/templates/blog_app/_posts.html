@@ -4,6 +4,7 @@
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text">{{ post.created }}</p>
       <div>{{ post.body }}</div>
+      <div><a href="{% url 'blog_app:post_edit' post.id %}">Edit Post</a></div>
     </div>
   </div>
   {% endfor %}
