@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Post
-from .forms import PostNewForm
+from .forms import PostNewForm, PostEditForm
 # for testing
 from django.http import HttpResponse
 
@@ -12,7 +12,7 @@ def home(request):
   return render(request, 'blog_app/home.html', context)
 
 def post_new(request):
-  '''create/edit post'''
+  '''create post'''
   if request.method != 'POST':
     # send empty form if GET
     form = PostNewForm()
@@ -23,4 +23,18 @@ def post_new(request):
       form.save()
       return redirect('blog_app:home')
   context = {'form':form}
-  return render(request, 'blog_app/edit.html', context)
+  return render(request, 'blog_app/post_new.html', context)
+
+def post_edit(request, post_id):
+  '''edit post'''
+  post = Post.objects.get(id=post_id)
+  if request.method != 'POST':
+    form = PostEditForm(instance=post)
+  else:
+    form = PostEditForm(instance=post, data=request.POST)
+    # check form and save to table
+    if form.is_valid():
+      form.save()
+      return redirect('blog_app:home')
+  context = {'form':form, 'post_id':post_id}
+  return render(request, 'blog_app/post_edit.html', context)

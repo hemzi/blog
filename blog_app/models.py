@@ -7,3 +7,5 @@ class Post(models.Model):
   created = models.DateTimeField(auto_now_add=True)
   updated = models.DateField(auto_now=True)
   # tags = 
+  def __str__(self):
+    return self.title[:10]
