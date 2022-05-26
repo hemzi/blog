@@ -7,3 +7,10 @@ class PostNewForm(forms.ModelForm):
         model = Post
         fields = ['title', 'body']
         labels = {'title': '', 'body': ''}
+
+class PostEditForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'body']
+        labels = {'title': '', 'body': ''}
+        
