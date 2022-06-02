@@ -38,3 +38,11 @@ def post_edit(request, post_id):
       return redirect('blog_app:home')
   context = {'form':form, 'post_id':post_id}
   return render(request, 'blog_app/post_edit.html', context)
+
+  def post_delete(request, post_id):
+    '''delete post'''
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    posts = Post.objects.order_by('-created')
+    context = {'posts':posts}
+    return render(request, 'blog_app/home.html', context)
